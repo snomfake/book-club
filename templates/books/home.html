@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block content %}
+	<table class="table table-dark" style="background-color: #121212;">
+		<thead>
+			<th>
+				<tr>
+					<th scope="col">Name</th>
+					<th scope="col">Author</th>
+					<th scope="col">Genre</th>
+					<th scope="col">Publish date</th>
+					<th scope="col">More</th>
+				</tr>
+			</th>
+		</thead>
+		<tbody>
+			{% for book in books %}
+				<tr>
+					<th scope="row">{{ book.title }}</th>
+					<th>{{ book.author }}</th>
+					<th>{{ book.genre }}</th>
+					<th>{{ book.publish_date}}</th>
+					<th><a href="{{ book.get_absolute_url }}"><i class="bi bi-eye"></i></a></th>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock content %}

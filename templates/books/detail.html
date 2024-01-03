@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="1" style="height: 100%;">
+					<img src="{{ book.image.url }}" alt="" style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="2" style="height: 100%; display: flex; align-items: center;">
+          <p style="margin: 0;">Info</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center mt-3">
+        <div class="3">
+          <form action="" class="comment"></form>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
+
