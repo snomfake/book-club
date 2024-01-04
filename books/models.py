@@ -32,8 +32,8 @@ class Book(models.Model):
     title = models.CharField(max_length=150)
     slug = models.SlugField(unique_for_date="publish_date")
     body = models.TextField()
-    image = models.ImageField(upload_to="images/")
-    pdf = models.FileField(upload_to="books/")
+    image = models.ImageField(upload_to="images/", blank=True, null=True)
+    pdf = models.FileField(upload_to="books/", blank=True, null=True)
     publish_date = models.DateTimeField(auto_now_add=True)
     status = models.BooleanField(default=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
@@ -43,7 +43,7 @@ class Book(models.Model):
         ordering = ("-publish_date",)
 
     def __str__(self):
-        return f"Books({self.title}, {self.publish_date}, {self.status})"
+        return f"Book({self.title}, {self.publish_date}, {self.status})"
 
     def get_absolute_url(self):
         return reverse("books:detail", args=[str(self.slug)])
@@ -64,4 +64,4 @@ class Comment(models.Model):
         ordering = ("-publish_date",)
 
     def __str__(self):
-        return f"Comments({self.username}, {self.body}, {self.publish_date})"
+        return f"Comment({self.username}, {self.body}, {self.publish_date})"

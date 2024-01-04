@@ -1,25 +1,26 @@
-from django.views.generic.list import ListView
-from django.views.generic.detail import DetailView
+from django.views.generic import View
+from django.shortcuts import render, get_object_or_404
 
 from books.models import Book
 
 
-class BookListView(ListView):
+class BookList(View):
     """
-    View for the homepage
-    """
-
-    queryset = Book.objects.filter(status=True)
-    context_object_name = "books"
-    template_name = "books/home.html"
-
-
-class BookDetailView(DetailView):
-    """
-    View for the details page
+    List all book
     """
 
-    model = Book
-    context_object_name = "book"
-    slug_field = "slug"
-    template_name = "books/detail.html"
+    def get(self, request):
+        books = Book.objects.filter(status=True)
+        context = {"books": books}
+        return render(request, "books/home.html", context)
+
+
+class BookDetail(View):
+    """
+    Retrieve a book instance
+    """
+
+    def get(self, request, slug):
+        book = get_object_or_404(Book, slug=slug)
+        context = {"book": book}
+        return render(request, "books/detail.html", context)
