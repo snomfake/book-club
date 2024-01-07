@@ -1,28 +1,68 @@
 {% extends "index.html" %}
 
 {% block content %}
-  <div class="container">
+  <div class="container mt-4">
     <div class="row">
       <div class="col-md-6">
-        <div class="1" style="height: 100%;">
-					<img src="{{ book.image.url }}" alt="" style="height: 100%; width: 100%; object-fit: cover;">
+        <div class="rounded overflow-hidden">
+          <img src="{{ book.image_detail.url }}" alt="{{ book.title }}" class="img-fluid">
         </div>
       </div>
 
       <div class="col-md-6">
-        <div class="2" style="height: 100%; display: flex; align-items: center;">
-          <p style="margin: 0;">Info</p>
+        <div class="d-flex flex-column h-100 justify-content-center">
+          <p class="mb-1">Name: <strong>{{ book.title }}</strong></p>
+          <p class="mb-1">Author: <strong>{{ book.author }}</strong></p>
+          <p class="mb-1">Genre: <strong>{{ book.genre }}</strong></p>
+          <p class="mb-1">Publish: <strong>{{ book.publish_date }}</strong></p>
+          <p class="mb-0">{{ book.body }}</p>
         </div>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-12 text-center mt-3">
-        <div class="3">
-          <form action="" class="comment"></form>
-        </div>
+		<br>
+		<br>
+		<p class="border-bottom border-white"></p>
+		<br>
+
+		{% if request.user.is_authenticated %}
+    <div class="row mt-3">
+      <div class="col-md-12">
+				<form action="{% url 'books:add_comment' book.slug %}" method="post">
+					{% csrf_token %}
+					<div class="form-group">
+						<label for="exampleInputUsername">Username</label>
+						<input name="username" type="text" class="form-text text-muted" style="background-color: #121212;" id="exampleInputUsername" placeholder="Enter username">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputComment">Comment</label>
+						<p>
+							<textarea name="body" id="exampleInputComment" cols="80" rows="5" style="background-color: #121212; color: #ffffff;"></textarea>
+							<button type="submit"><i class="bi bi-send-fill"></i></button>						
+						</p>
+					</div>
+        </form>
       </div>
     </div>
+		{% else %}
+			<div class="card" style="background-color: #121212;">
+				<div class="card-title text-center">
+					Comments can only be left by authenticated users.
+				</div>
+			</div>
+		{% endif %}
+
+		<h3 class="text-center">Comments</h3>
+
+		{% for comment in book.comment_set.all %}
+		<div class="card border border-white" style="background-color: #121212;">
+			<div class="card-body">
+				<h5 class="card-title">{{ comment.username }}</h5>
+				<p class="card-text">{{ comment.body }}</p>
+				<p class="card-text"><small class="text-muted">{{ comment.publish_date }}</small></p>
+			</div>
+		</div>
+		{% endfor %}
   </div>
 {% endblock content %}
 

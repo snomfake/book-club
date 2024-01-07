@@ -1,28 +1,18 @@
 {% extends "index.html" %}
 
 {% block content %}
-	<table class="table table-dark" style="background-color: #121212;">
-		<thead>
-			<th>
-				<tr>
-					<th scope="col">Name</th>
-					<th scope="col">Author</th>
-					<th scope="col">Genre</th>
-					<th scope="col">Publish date</th>
-					<th scope="col">More</th>
-				</tr>
-			</th>
-		</thead>
-		<tbody>
-			{% for book in books %}
-				<tr>
-					<th scope="row">{{ book.title }}</th>
-					<th>{{ book.author }}</th>
-					<th>{{ book.genre }}</th>
-					<th>{{ book.publish_date}}</th>
-					<th><a href="{{ book.get_absolute_url }}"><i class="bi bi-eye"></i></a></th>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+	<div class="card-deck">
+		{% for book in books %}
+		<div class="card" style="background-color: #121212;">
+			<img src="{{ book.image_card.url }}" alt="" class="card-img-top">
+			<div class="card-body">
+				<h5 class="card-title"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h5>
+				<p class="card-text">{{ book.body|truncatechars:200 }}</p>
+				<div class="card-footer">
+					<small class="text-muted btn btn-link">Publish {{ book.publish_date }} by {{ book.author }}</small>
+				</div>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
 {% endblock content %}
