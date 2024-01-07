@@ -59,7 +59,7 @@ class Comment(models.Model):
     body = models.TextField()
     publish_date = models.DateTimeField(auto_now_add=True)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
-    active = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
 
     class Meta:
         ordering = ("-publish_date",)

@@ -6,19 +6,16 @@
 	<title>Book CLub</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-	<link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
 </head>
-<body class="text-white" style="background-color: #121212;">
+<body class="text-white also-bg">
 	<!-- navbar -->
 	{% include "included/navbar.html" %}
 	<br>
 	<br>
-	<h2 class="text-center font-weight-bold text-white">
-		Welcome to Book Club
-	</h2>
-	<br>
-	<br>
 	
+	<!-- main content -->
 	<article class="container">
 		{% block content %}
 		{% endblock content %}

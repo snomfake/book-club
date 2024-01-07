@@ -2,6 +2,7 @@
 
 {% block content %}
   <div class="container mt-4">
+		<!-- image book -->
     <div class="row">
       <div class="col-md-6">
         <div class="rounded overflow-hidden">
@@ -9,6 +10,7 @@
         </div>
       </div>
 
+			<!-- info about book -->
       <div class="col-md-6">
         <div class="d-flex flex-column h-100 justify-content-center">
           <p class="mb-1">Name: <strong>{{ book.title }}</strong></p>
@@ -25,6 +27,7 @@
 		<p class="border-bottom border-white"></p>
 		<br>
 
+		<!-- comment form -->
 		{% if request.user.is_authenticated %}
     <div class="row mt-3">
       <div class="col-md-12">
@@ -32,30 +35,29 @@
 					{% csrf_token %}
 					<div class="form-group">
 						<label for="exampleInputUsername">Username</label>
-						<input name="username" type="text" class="form-text text-muted" style="background-color: #121212;" id="exampleInputUsername" placeholder="Enter username">
+						<input name="username" type="text" class="form-text text-muted also-bg" id="exampleInputUsername" placeholder="Enter username">
 					</div>
 					<div class="form-group">
 						<label for="exampleInputComment">Comment</label>
 						<p>
-							<textarea name="body" id="exampleInputComment" cols="80" rows="5" style="background-color: #121212; color: #ffffff;"></textarea>
-							<button type="submit"><i class="bi bi-send-fill"></i></button>						
+							<textarea class="also-bg color-text" name="body" id="exampleInputComment" cols="115" rows="5"></textarea>
 						</p>
+						<button class="btn btn-outline-light" type="submit">Add comment <i class="bi bi-send-fill"></i></button>						
 					</div>
         </form>
       </div>
     </div>
 		{% else %}
-			<div class="card" style="background-color: #121212;">
+			<div class="card also-bg">
 				<div class="card-title text-center">
 					Comments can only be left by authenticated users.
 				</div>
 			</div>
 		{% endif %}
 
-		<h3 class="text-center">Comments</h3>
-
-		{% for comment in book.comment_set.all %}
-		<div class="card border border-white" style="background-color: #121212;">
+		<!-- list comments -->
+		{% for comment in comments %}
+		<div class="card border border-white also-bg">
 			<div class="card-body">
 				<h5 class="card-title">{{ comment.username }}</h5>
 				<p class="card-text">{{ comment.body }}</p>
