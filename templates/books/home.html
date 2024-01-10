@@ -7,10 +7,9 @@
 		{% for book in books %}
 			<div class="col-12 col-md-4">
 				<div class="card also-bg">
-					<img src="{{ book.image_card.url }}" alt="{{ book.title }}" class="card-img-top">
+					<img src="{{ book.image.url }}" alt="{{ book.title }}" class="card-img-top">
 					<div class="card-body">
 						<h5 class="card-title"><a href="{{ book.get_absolute_url }}">{{ book.title }}</a></h5>
-						<p class="card-text">{{ book.body|truncatechars:100 }}</p>
 						<div class="card-footer">
 							<small class="text-muted">Publish {{ book.publish_date }} by {{ book.author }}</small>
 						</div>

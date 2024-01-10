@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="border boreder-light rounded p-4">
+    <form action="{% url 'registration:signup' %}" method="post">
+        {% csrf_token %}
+        <h1 class="text-center mb-5"><strong>SIGNUP</strong></h1>
+        <div class="justify-content-center d-flex mb-3">
+            <input name="{{ form.username.name }}" type="text" class="form-control text-center w-50 h-50" id="{{ form.username.id_for_label }}" placeholder="Enter your `Username`">
+        </div>
+
+        <div class="justify-content-center d-flex mb-3">
+            <input name="{{ form.password1.name }}" type="password" class="form-control text-center w-50 h-50" id="{{ form.password1.id_for_label }}" placeholder="Enter your `Password`">
+        </div>
+
+        <div class="justify-content-center d-flex">
+            <input name="{{ form.password2.name }}" type="password" class="form-control text-center w-50 h-50" id="{{ form.password2.id_for_label }}" placeholder="Repeat your `Password`">
+        </div>
+
+        <div class="justify-content-center d-flex mt-5">
+            <button class="btn btn-block btn-info w-50 h-50" type="submit"><i class="bi bi-door-open"></i> SignUp</button>
+        </div>
+    </form>
+
+    <div class="justify-content-center d-flex">
+        <div class="horizontal-line mt-4">
+            <span>OR</span>
+        </div>
+    </div>
+
+   <div class="justify-content-center d-flex mt-4">
+        <a href="" class="btn btn-block btn-secondary w-50 h-50"><i class="bi bi-github"></i> Continue via GitHub</a>
+    </div>
+
+    <div class="justify-content-center d-flex mt-4 sm">
+        <span>Have a account? <a href="{% url 'registration:signin' %}">SingIn</a></span>
+    </div>
+</div>
+{% endblock content %}

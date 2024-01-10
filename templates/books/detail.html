@@ -2,33 +2,20 @@
 
 {% block content %}
   <div class="container mt-4">
-		<!-- image book -->
-    <div class="row">
-      <div class="col-md-6">
-        <div class="rounded overflow-hidden">
-          <img src="{{ book.image_detail.url }}" alt="{{ book.title }}" class="img-fluid">
-        </div>
-      </div>
 
-			<!-- info about book -->
-      <div class="col-md-6">
+	<!-- info about book -->
+      <div class="">
         <div class="d-flex flex-column h-100 justify-content-center">
-          <p class="mb-1">Name: <strong>{{ book.title }}</strong></p>
-          <p class="mb-1">Author: <strong>{{ book.author }}</strong></p>
-          <p class="mb-1">Genre: <strong>{{ book.genre }}</strong></p>
-          <p class="mb-1">Publish: <strong>{{ book.publish_date }}</strong></p>
-          <p class="mb-0">{{ book.body }}</p>
+          <p class="mb-0">{{ book.body|safe }}</p>
         </div>
       </div>
     </div>
 
-		<br>
-		<br>
-		<p class="border-bottom border-white"></p>
-		<br>
+	<br>
+	<br>
 
-		<!-- comment form -->
-		{% if request.user.is_authenticated %}
+	<!-- comment form -->
+	{% if request.user.is_authenticated %}
     <div class="row mt-3">
       <div class="col-md-12">
 				<form action="{% url 'books:add_comment' book.slug %}" method="post">
@@ -42,7 +29,7 @@
 						<p>
 							<textarea class="also-bg color-text" name="body" id="exampleInputComment" cols="115" rows="5"></textarea>
 						</p>
-						<button class="btn btn-outline-light" type="submit">Add comment <i class="bi bi-send-fill"></i></button>						
+						<button class="btn btn-outline-light" type="submit">Add comment <i class="bi bi-send-fill"></i></button>
 					</div>
         </form>
       </div>
@@ -67,4 +54,3 @@
 		{% endfor %}
   </div>
 {% endblock content %}
-
