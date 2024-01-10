@@ -60,7 +60,7 @@ class Search(View):
 
         books = Book.objects.annotate(
             search=SearchVector("title", "author__full_name")
-            ).filter(search=q)
+        ).filter(search=q)
 
         context = {"books": books, "q": q}
         return render(request, "books/home.html", context)

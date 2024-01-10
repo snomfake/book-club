@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "books.apps.BooksConfig",
+    "registration.apps.RegistrationConfig",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -129,3 +131,6 @@ MEDIA_ROOT = BASE_DIR / "assets/"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+LOGIN_REDIRECT_URL = "books:home"
+LOGOUT_REDIRECT_URL = "books:home"
