@@ -6,11 +6,11 @@
         {% csrf_token %}
         <h1 class="text-center mb-5"><strong>SIGNIN</strong></h1>
         <div class="justify-content-center d-flex mb-3">
-            <input name="{{ form.username.name }}" type="text" class="form-control text-center w-50 h-50" id="{{ form.username.id_for_label }}" placeholder="Enter your `Username`">
+            <input name="{{ form.username.name }}" type="text" class="form-control text-center w-50 h-50" placeholder="Enter your `Username`" required>
         </div>
 
         <div class="justify-content-center d-flex">
-            <input name="{{ form.password.name }}" type="password" class="form-control text-center w-50 h-50" id="{{ form.password.id_for_label }}" placeholder="Enter your `Password`">
+            <input name="{{ form.password.name }}" type="password" class="form-control text-center w-50 h-50" placeholder="Enter your `Password`" required>
         </div>
         <br>
 

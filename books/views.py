@@ -6,6 +6,7 @@ from django.views.generic import View
 from books.forms import CommentForm
 from books.models import Book
 
+from django.contrib.auth.views import PasswordChangeView
 
 class BookList(View):
     """List all book"""
