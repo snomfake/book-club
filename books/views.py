@@ -1,4 +1,5 @@
 from django.contrib.postgres.search import SearchVector
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.generic import View
@@ -6,7 +7,6 @@ from django.views.generic import View
 from books.forms import CommentForm
 from books.models import Book
 
-from django.contrib.auth.views import PasswordChangeView
 
 class BookList(View):
     """List all book"""
@@ -38,7 +38,7 @@ class BookDetail(View):
         return render(request, "books/detail.html", context)
 
 
-class AddComment(View):
+class AddComment(LoginRequiredMixin, View):
     """Add comment"""
 
     def post(self, request, slug: str):
