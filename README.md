@@ -19,7 +19,9 @@ Integrate CKEditor to empower content creators with an easy-to-use editor for cr
 ![Signin](assets/screenshots/signin.png)
 
 ## Usage
-`git clone https://github.com/snomfake/book-club/ && cd book-club`
-`docker-compose build`
-`docker-compose run --rm book-club sh -c "./manage.py migrate"`
-`docker-compose up`
+```
+git clone https://github.com/snomfake/book-club/ && cd book-club
+docker-compose build
+docker-compose run --rm book-club sh -c "./manage.py migrate"
+docker-compose up
+```
