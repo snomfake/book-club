@@ -1,5 +1,5 @@
 # book-club
-Explore the world of Django development in "Django Unveiled," a concise yet comprehensive guide to building dynamic web applications. This project covers key functionalities:
+Explore the world of Django development a concise yet comprehensive guide to building dynamic web applications. This project covers key functionalities:
 - **GitHub Authentication**
 Learn to implement secure GitHub authentication for seamless user logins, enhancing both security and user experience.
 - **Full-Text Search**
